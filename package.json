@@ -1,0 +1,28 @@
+{
+    "name": "blanche",
+    "displayName": "Blanché",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/shytikov/blanche"
+    },
+    "publisher": "shytikov",
+    "icon": "media/logo.png",
+    "description": "Blanché - a monochrome theme",
+    "version": "0.1.0",
+    "engines": {
+        "vscode": "^1.24.0"
+    },
+    "keywords": [],
+    "categories": [
+        "Themes"
+    ],
+    "contributes": {
+        "themes": [
+            {
+                "label": "Blanché",
+                "uiTheme": "vs",
+                "path": "./themes/blanche-color-theme.json"
+            }
+        ]
+    }
+}

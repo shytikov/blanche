@@ -7,12 +7,21 @@
     },
     "publisher": "shytikov",
     "icon": "media/logo.png",
-    "description": "Blanché - a monochrome theme",
+    "description": "Blanché - a monochrome theme of sophisticated vibes",
     "version": "0.1.0",
     "engines": {
         "vscode": "^1.24.0"
     },
-    "keywords": [],
+    "keywords": [
+        "theme",
+        "light",
+        "monochrome",
+        "rams.vim",
+        "Light Delight",
+        "Nollåtta",
+        "Nord Deep",
+        "GitHub Liight Monochrome"
+    ],
     "categories": [
         "Themes"
     ],

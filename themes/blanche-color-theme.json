@@ -52,8 +52,9 @@
 		"problemsInfoIcon.foreground": "#05a",
 		"problemsWarningIcon.foreground": "#cd9731",
 		"quickInputList.focusBackground": "#0002",
+		"quickInput.background": "#fff",
 		"scrollbarSlider.background": "#0003",
-		"sideBar.background": "#eee",
+		"sideBar.background": "#fff",
 		"sideBar.border": "#0003",
 		"sideBarTitle.foreground": "#555",
 		"statusBar.background": "#ddd",
@@ -130,7 +131,8 @@
 			"name": "Comments: Documentation",
 			"scope": [
 				"comment.documentation",
-				"comment.block.documentation"
+				"comment.block.documentation",
+				"string.quoted.docstring"
 			],
 			"settings": {
 				"fontStyle": "italic",
@@ -201,9 +203,10 @@
 			}
 		},
 		{
-			"name": "Separator",
+			"name": "Delimiters",
 			"scope": [
-				"punctuation"
+				"punctuation.separator",
+				"punctuation.accessor"
 			],
 			"settings": {
 				"fontStyle": "bold"
@@ -242,6 +245,16 @@
 			],
 			"settings": {
 				"fontStyle": "italic",
+				"foreground": "#232731"
+			}
+		},
+		{
+			"name": "Strings: Punctuation",
+			"scope": [
+				"punctuation.definition.string"
+			],
+			"settings": {
+				"fontStyle": "italic bold",
 				"foreground": "#232731"
 			}
 		}

@@ -208,7 +208,8 @@
 			"name": "Delimiters",
 			"scope": [
 				"punctuation.separator",
-				"punctuation.accessor"
+				"punctuation.accessor",
+				"punctuation.other"
 			],
 			"settings": {
 				"fontStyle": "bold",
@@ -238,7 +239,7 @@
 			],
 			"settings": {
 				"fontStyle": "underline",
-				"foreground": "#555"
+				"foreground": "#666"
 			}
 		},
 		{

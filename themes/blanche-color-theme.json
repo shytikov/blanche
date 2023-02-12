@@ -192,6 +192,15 @@
 			}
 		},
 		{
+			"name": "Variables",
+			"scope": [
+				"variable",
+			],
+			"settings": {
+				"fontStyle": ""
+			}
+		},
+		{
 			"name": "Separator",
 			"scope": [
 				"punctuation"
@@ -219,20 +228,20 @@
 		{
 			"name": "Functions",
 			"scope": [
-				"entity.name.function",
-				"meta.function-call",
-				"support.function"
+				"entity.name.function"
 			],
 			"settings": {
-				"fontStyle": "italic",
+				"fontStyle": "underline"
 			}
 		},
 		{
 			"name": "Strings",
 			"scope": [
-				"string"
+				"string.quoted",
+				"string.template"
 			],
 			"settings": {
+				"fontStyle": "italic",
 				"foreground": "#232731"
 			}
 		}

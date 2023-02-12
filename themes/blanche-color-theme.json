@@ -8,7 +8,7 @@
 		"badge.background": "#aaa",
 		"contrastBorder": "#0003",
 		"editor.background": "#fff",
-		"editor.foreground": "#555",
+		"editor.foreground": "#333",
 		"editor.inactiveSelectionBackground": "#0003",
 		"editor.selectionBackground": "#e5e5e5",
 		"editor.selectionHighlightBackground": "#ea13",
@@ -52,9 +52,8 @@
 		"problemsInfoIcon.foreground": "#05a",
 		"problemsWarningIcon.foreground": "#cd9731",
 		"quickInputList.focusBackground": "#0002",
-		"quickInput.background": "#fff",
 		"scrollbarSlider.background": "#0003",
-		"sideBar.background": "#fff",
+		"sideBar.background": "#eee",
 		"sideBar.border": "#0003",
 		"sideBarTitle.foreground": "#555",
 		"statusBar.background": "#ddd",
@@ -116,7 +115,7 @@
 			],
 			"settings": {
 				"fontStyle": "italic",
-				"foreground": "#bbb"
+				"foreground": "#999"
 			}
 		},
 		{
@@ -124,7 +123,7 @@
 			"scope": "comment.block.preprocessor",
 			"settings": {
 				"fontStyle": "italic",
-				"foreground": "#bbb"
+				"foreground": "#999"
 			}
 		},
 		{
@@ -136,7 +135,17 @@
 			],
 			"settings": {
 				"fontStyle": "italic",
-				"foreground": "#bbb"
+				"foreground": "#999"
+			}
+		},
+		{
+			"name": "Comments: Documentation",
+			"scope": [
+				"punctuation.definition.comment"
+			],
+			"settings": {
+				"fontStyle": "bold italic",
+				"foreground": "#999"
 			}
 		},
 		{
@@ -171,7 +180,8 @@
 				"punctuation.separator.pointer-access.cpp"
 			],
 			"settings": {
-				"fontStyle": "bold"
+				"fontStyle": "bold",
+				"foreground": "#333"
 			}
 		},
 		{
@@ -190,16 +200,8 @@
 				"storage.type"
 			],
 			"settings": {
-				"fontStyle": "bold"
-			}
-		},
-		{
-			"name": "Variables",
-			"scope": [
-				"variable",
-			],
-			"settings": {
-				"fontStyle": ""
+				"fontStyle": "bold",
+				"foreground": "#333"
 			}
 		},
 		{
@@ -209,7 +211,8 @@
 				"punctuation.accessor"
 			],
 			"settings": {
-				"fontStyle": "bold"
+				"fontStyle": "bold",
+				"foreground": "#333"
 			}
 		},
 		{
@@ -234,7 +237,8 @@
 				"entity.name.function"
 			],
 			"settings": {
-				"fontStyle": "underline"
+				"fontStyle": "underline",
+				"foreground": "#555"
 			}
 		},
 		{
@@ -245,7 +249,7 @@
 			],
 			"settings": {
 				"fontStyle": "italic",
-				"foreground": "#232731"
+				"foreground": "#666"
 			}
 		},
 		{
@@ -255,7 +259,7 @@
 			],
 			"settings": {
 				"fontStyle": "italic bold",
-				"foreground": "#232731"
+				"foreground": "#666"
 			}
 		}
 	]

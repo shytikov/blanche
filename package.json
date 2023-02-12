@@ -6,9 +6,8 @@
         "url": "https://github.com/shytikov/blanche"
     },
     "publisher": "shytikov",
-    "icon": "media/logo.png",
     "description": "Blanché - a monochrome theme of sophisticated vibes",
-    "version": "0.1.0",
+    "version": "1.0.0",
     "engines": {
         "vscode": "^1.24.0"
     },

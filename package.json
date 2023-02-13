@@ -7,7 +7,7 @@
     },
     "publisher": "shytikov",
     "description": "Blanché - simple monochrome theme with sophisticated vibes",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "engines": {
         "vscode": "^1.24.0"
     },

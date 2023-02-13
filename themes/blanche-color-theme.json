@@ -248,6 +248,26 @@
 			}
 		},
 		{
+			"name": "Documents",
+			"scope": [
+				"source.json",
+				"source.yaml"
+			],
+			"settings": {
+				"foreground": "#666"
+			}
+		},
+		{
+			"name": "Properties",
+			"scope": [
+				"support.type.property-name.json",
+				"entity.name.tag.yaml"
+			],
+			"settings": {
+				"foreground": "#000"
+			}
+		},
+		{
 			"name": "Strings",
 			"scope": [
 				"string.quoted",

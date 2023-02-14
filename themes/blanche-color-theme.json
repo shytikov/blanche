@@ -144,7 +144,7 @@
 				"punctuation.definition.comment"
 			],
 			"settings": {
-				"fontStyle": "bold italic",
+				"fontStyle": "italic",
 				"foreground": "#999"
 			}
 		},
@@ -239,7 +239,7 @@
 			],
 			"settings": {
 				"fontStyle": "underline",
-				"foreground": "#666"
+				"foreground": "#555"
 			}
 		},
 		{
@@ -249,6 +249,7 @@
 				"source.yaml"
 			],
 			"settings": {
+				"fontStyle": "italic",
 				"foreground": "#666"
 			}
 		},
@@ -259,6 +260,7 @@
 				"entity.name.tag.yaml"
 			],
 			"settings": {
+				"fontStyle": "",
 				"foreground": "#000"
 			}
 		},
@@ -269,17 +271,17 @@
 				"string.template"
 			],
 			"settings": {
-				"fontStyle": "italic",
 				"foreground": "#666"
 			}
 		},
 		{
 			"name": "Strings: Punctuation",
 			"scope": [
-				"punctuation.definition.string"
+				"punctuation.definition.string",
+				"punctuation.definition.template-expression"
 			],
 			"settings": {
-				"fontStyle": "italic bold",
+				"fontStyle": "bold",
 				"foreground": "#666"
 			}
 		}

@@ -271,6 +271,7 @@
 				"string.template"
 			],
 			"settings": {
+				"fontStyle": "italic",
 				"foreground": "#666"
 			}
 		},
@@ -281,7 +282,7 @@
 				"punctuation.definition.template-expression"
 			],
 			"settings": {
-				"fontStyle": "bold",
+				"fontStyle": "italic bold",
 				"foreground": "#666"
 			}
 		},

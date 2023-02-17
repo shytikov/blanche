@@ -53,7 +53,7 @@
 		"problemsWarningIcon.foreground": "#cd9731",
 		"quickInputList.focusBackground": "#0002",
 		"scrollbarSlider.background": "#0003",
-		"sideBar.background": "#eee",
+		"sideBar.background": "#fff",
 		"sideBar.border": "#0003",
 		"sideBarTitle.foreground": "#555",
 		"statusBar.background": "#ddd",
@@ -284,6 +284,58 @@
 				"fontStyle": "bold",
 				"foreground": "#666"
 			}
-		}
+		},
+		{
+			"name": "Extra: Diff Header",
+			"scope": "meta.diff.header.git",
+			"settings": {
+				"fontStyle": "underline"
+			}
+		},
+		{
+			"name": "Extra: Diff Range",
+			"scope": [
+				"meta.diff.range",
+				"meta.diff.index",
+				"meta.separator"
+			],
+			"settings": {
+				"fontStyle": "bold",
+			}
+		},
+		{
+			"name": "Extra: Diff From",
+			"scope": "meta.diff.header.from-file",
+			"settings": {
+				"foreground": "#999"
+			}
+		},
+		{
+			"name": "Extra: Diff To",
+			"scope": "meta.diff.header.to-file",
+			"settings": {
+				"foreground": "#999"
+			}
+		},
+		{
+			"name": "Extra: Diff Deleted",
+			"scope": [
+				"markup.deleted.diff",
+				"punctuation.definition.deleted"
+			],
+			"settings": {
+				"fontStyle": "strikethrough"
+			}
+		},
+		{
+			"name": "Extra: Diff Inserted",
+			"scope": [
+				"markup.inserted.diff",
+				"punctuation.definition.inserted"
+			],
+			"settings": {
+				"fontStyle": "bold"
+			}
+		},
 	]
 }

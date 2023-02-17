@@ -53,7 +53,7 @@
 		"problemsWarningIcon.foreground": "#cd9731",
 		"quickInputList.focusBackground": "#0002",
 		"scrollbarSlider.background": "#0003",
-		"sideBar.background": "#fff",
+		"sideBar.background": "#eee",
 		"sideBar.border": "#0003",
 		"sideBarTitle.foreground": "#555",
 		"statusBar.background": "#ddd",

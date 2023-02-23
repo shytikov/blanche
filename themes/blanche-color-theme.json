@@ -135,7 +135,7 @@
 			],
 			"settings": {
 				"fontStyle": "italic",
-				"foreground": "#999"
+				"foreground": "#666"
 			}
 		},
 		{
@@ -207,9 +207,10 @@
 		{
 			"name": "Delimiters",
 			"scope": [
-				"punctuation.separator",
 				"punctuation.accessor",
-				"punctuation.other"
+				"punctuation.other",
+				"punctuation.section",
+				"punctuation.separator"
 			],
 			"settings": {
 				"fontStyle": "bold",
@@ -233,13 +234,14 @@
 			}
 		},
 		{
-			"name": "Functions",
+			"name": "Entities",
 			"scope": [
-				"entity.name.function"
+				"entity.name.function",
+				"entity.name.type"
 			],
 			"settings": {
 				"fontStyle": "underline",
-				"foreground": "#555"
+				"foreground": "#666"
 			}
 		},
 		{

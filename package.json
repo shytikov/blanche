@@ -1,36 +1,36 @@
 {
-    "name": "blanche",
-    "displayName": "Blanché",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/shytikov/blanche"
-    },
-    "publisher": "shytikov",
-    "description": "Blanché - simple monochrome theme with sophisticated vibes",
-    "version": "1.0.8",
-    "engines": {
-        "vscode": "^1.24.0"
-    },
-    "keywords": [
-        "theme",
-        "light",
-        "monochrome",
-        "rams.vim",
-        "Light Delight",
-        "Nollåtta",
-        "Nord Deep",
-        "GitHub Liight Monochrome"
-    ],
-    "categories": [
-        "Themes"
-    ],
-    "contributes": {
-        "themes": [
-            {
-                "label": "Blanché",
-                "uiTheme": "vs",
-                "path": "./themes/blanche-color-theme.json"
-            }
-        ]
-    }
+  "name": "blanche",
+  "displayName": "Blanche",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shytikov/blanche"
+  },
+  "publisher": "shytikov",
+  "description": "Blanche - simple monochrome theme with sophisticated vibes",
+  "version": "1.0.8",
+  "engines": {
+    "vscode": "^1.54.0"
+  },
+  "keywords": [
+    "theme",
+    "light",
+    "monochrome",
+    "minimal",
+    "minimalist",
+    "grayscale",
+    "black and white",
+    "light theme"
+  ],
+  "categories": [
+    "Themes"
+  ],
+  "contributes": {
+    "themes": [
+      {
+        "label": "Blanche",
+        "uiTheme": "vs",
+        "path": "./themes/blanche-color-theme.json"
+      }
+    ]
+  }
 }

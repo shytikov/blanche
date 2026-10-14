@@ -4,7 +4,10 @@
 local M = {}
 
 M.palette = {
-  bg              = "#ffffff",
+  bg              = "#F1F2F4",
+  workbench       = "#dddddd",
+  terminal_bg     = "#232731",
+  terminal_fg     = "#d8dee9",
   fg              = "#232731",
   black           = "#3b4252",
   red             = "#bf616a",
@@ -28,37 +31,41 @@ M.palette = {
   error           = "#ff0000",
   warning         = "#cd9731",
   info            = "#0055aa",
-  selection       = "#e5e5e5",
+  selection       = "#D9DEE7",
+  line_highlight  = "#E5E7EB",
   selection2      = "#eeaa13",
-  border          = "#000333",
+  border          = "#B0B4BB",
   inactive        = "#aaaaaa",
-  tab_active      = "#ffffff",
-  tab_inactive    = "#eeeeee",
+  tab_active      = "#F1F2F4",
+  tab_inactive    = "#F1F2F4",
   tab_fg          = "#333333",
-  tab_fg_inactive = "#bbbbbb",
+  tab_fg_inactive = "#999999",
 }
 
 M.setup = function()
   local c = M.palette
   vim.cmd("highlight clear")
   if vim.fn.exists("syntax_on") then vim.cmd("syntax reset") end
+  vim.o.background = "light"
   vim.g.colors_name = "blanche"
 
   -- UI
   vim.api.nvim_set_hl(0, "Normal",                  { fg = c.fg, bg = c.bg })
-  vim.api.nvim_set_hl(0, "NormalFloat",             { fg = c.fg, bg = c.bg })
+  vim.api.nvim_set_hl(0, "NormalFloat",             { fg = c.fg, bg = c.workbench })
   vim.api.nvim_set_hl(0, "NormalNC",                { fg = c.fg, bg = c.bg })
-  vim.api.nvim_set_hl(0, "FloatTitle",              { fg = c.accent, bg = c.bg, bold = true })
+  vim.api.nvim_set_hl(0, "FloatTitle",              { fg = c.accent, bg = c.workbench, bold = true })
   vim.api.nvim_set_hl(0, "Cursor",                  { reverse = true })
   vim.api.nvim_set_hl(0, "LineNr",                  { fg = c.inactive, bg = c.bg })
-  vim.api.nvim_set_hl(0, "CursorLine",              { underline = true })
-  vim.api.nvim_set_hl(0, "CursorLineNr",            { fg = c.fg, bg = c.bg, bold = true, underline = true })
+  vim.api.nvim_set_hl(0, "CursorLine",              { bg = c.line_highlight })
+  vim.api.nvim_set_hl(0, "CursorLineNr",            { fg = c.fg, bg = c.line_highlight, bold = true })
   vim.api.nvim_set_hl(0, "VertSplit",               { fg = c.border })
-  vim.api.nvim_set_hl(0, "StatusLine",              { fg = c.bg, bg = c.fg })
-  vim.api.nvim_set_hl(0, "StatusLineNC",            { fg = c.fg, bg = c.tab_inactive })
+  vim.api.nvim_set_hl(0, "StatusLine",              { fg = "#555555", bg = c.workbench })
+  vim.api.nvim_set_hl(0, "StatusLineNC",            { fg = "#555555", bg = c.workbench })
+  vim.api.nvim_set_hl(0, "StatusLineTerm",          { fg = c.terminal_fg, bg = c.terminal_bg })
+  vim.api.nvim_set_hl(0, "StatusLineTermNC",        { fg = c.terminal_fg, bg = c.terminal_bg })
   vim.api.nvim_set_hl(0, "TabLine",                 { fg = c.tab_fg_inactive, bg = c.tab_inactive })
   vim.api.nvim_set_hl(0, "TabLineSel",              { fg = c.tab_fg, bg = c.tab_active, bold = true })
-  vim.api.nvim_set_hl(0, "TabLineFill",             { bg = c.tab_inactive })
+  vim.api.nvim_set_hl(0, "TabLineFill",             { bg = c.workbench })
   vim.api.nvim_set_hl(0, "Visual",                  { bg = c.selection })
   vim.api.nvim_set_hl(0, "Search",                  { bg = c.selection2 })
   vim.api.nvim_set_hl(0, "Pmenu",                   { fg = c.fg, bg = c.bg })
@@ -66,7 +73,7 @@ M.setup = function()
   vim.api.nvim_set_hl(0, "PmenuSbar",               { bg = c.inactive })
   vim.api.nvim_set_hl(0, "PmenuThumb",              { bg = c.border })
   vim.api.nvim_set_hl(0, "WinSeparator",            { fg = c.border })
-  vim.api.nvim_set_hl(0, "FloatBorder",             { fg = c.border, bg = c.bg })
+  vim.api.nvim_set_hl(0, "FloatBorder",             { fg = c.border, bg = c.workbench })
   vim.api.nvim_set_hl(0, "MatchParen",              { bold = true, italic = true })
   vim.api.nvim_set_hl(0, "Directory",               { fg = c.fg, bold = true })
   vim.api.nvim_set_hl(0, "Title",                   { fg = c.fg, bold = true })
@@ -79,6 +86,11 @@ M.setup = function()
   vim.api.nvim_set_hl(0, "ColorColumn",             { bg = c.tab_inactive })
   vim.api.nvim_set_hl(0, "FoldColumn",              { fg = c.comment, bg = c.bg })
   vim.api.nvim_set_hl(0, "Folded",                  { fg = c.comment, bg = c.tab_inactive })
+  vim.api.nvim_set_hl(0, "SignColumn",              { fg = c.inactive, bg = c.bg })
+  vim.api.nvim_set_hl(0, "WinBar",                  { fg = c.fg, bg = c.bg })
+  vim.api.nvim_set_hl(0, "WinBarNC",                { fg = c.comment, bg = c.bg })
+  vim.api.nvim_set_hl(0, "QuickFixLine",            { bg = c.selection })
+  vim.api.nvim_set_hl(0, "SnippetTabstop",          { bg = c.selection })
 
   -- Syntax
   vim.api.nvim_set_hl(0, "Comment",                 { fg = c.comment, italic = true })
@@ -98,6 +110,13 @@ M.setup = function()
   vim.api.nvim_set_hl(0, "Underlined",              { underline = true })
   vim.api.nvim_set_hl(0, "Error",                   { fg = c.error, bold = true })
   vim.api.nvim_set_hl(0, "Todo",                    { fg = c.warning, bold = true, italic = true })
+  vim.api.nvim_set_hl(0, "Added",                   { fg = c.green })
+  vim.api.nvim_set_hl(0, "Changed",                 { fg = c.blue })
+  vim.api.nvim_set_hl(0, "Removed",                 { fg = c.red })
+  vim.api.nvim_set_hl(0, "SpellBad",                { undercurl = true, sp = c.error })
+  vim.api.nvim_set_hl(0, "SpellCap",                { undercurl = true, sp = c.blue })
+  vim.api.nvim_set_hl(0, "SpellLocal",              { undercurl = true, sp = c.cyan })
+  vim.api.nvim_set_hl(0, "SpellRare",               { undercurl = true, sp = c.magenta })
 
   -- Tree-sitter highlights
   vim.api.nvim_set_hl(0, "@comment",                { fg = c.comment, italic = true })
@@ -134,6 +153,14 @@ M.setup = function()
   vim.api.nvim_set_hl(0, "@tag",                    { fg = c.tab_fg, bold = true })
   vim.api.nvim_set_hl(0, "@tag.attribute",          { fg = c.accent })
   vim.api.nvim_set_hl(0, "@tag.delimiter",          { fg = c.inactive })
+  vim.api.nvim_set_hl(0, "@markup.heading",         { fg = c.fg, bold = true })
+  vim.api.nvim_set_hl(0, "@markup.strong",          { fg = c.fg, bold = true })
+  vim.api.nvim_set_hl(0, "@markup.italic",          { fg = c.fg, italic = true })
+  vim.api.nvim_set_hl(0, "@markup.link",            { fg = c.accent, underline = true })
+  vim.api.nvim_set_hl(0, "@markup.raw",             { fg = c.comment_doc, italic = true })
+  vim.api.nvim_set_hl(0, "@diff.plus",              { fg = c.green })
+  vim.api.nvim_set_hl(0, "@diff.delta",             { fg = c.blue })
+  vim.api.nvim_set_hl(0, "@diff.minus",             { fg = c.red })
 
   -- Diffs
   vim.api.nvim_set_hl(0, "DiffAdd",                 { bg = c.green })
@@ -146,6 +173,14 @@ M.setup = function()
   vim.api.nvim_set_hl(0, "DiagnosticWarn",          { fg = c.warning })
   vim.api.nvim_set_hl(0, "DiagnosticInfo",          { fg = c.blue })
   vim.api.nvim_set_hl(0, "DiagnosticHint",          { fg = c.accent })
+  vim.api.nvim_set_hl(0, "DiagnosticOk",            { fg = c.green })
+  vim.api.nvim_set_hl(0, "DiagnosticUnderlineError",{ undercurl = true, sp = c.red })
+  vim.api.nvim_set_hl(0, "DiagnosticUnderlineWarn", { undercurl = true, sp = c.warning })
+  vim.api.nvim_set_hl(0, "DiagnosticUnderlineInfo", { undercurl = true, sp = c.blue })
+  vim.api.nvim_set_hl(0, "DiagnosticUnderlineHint", { undercurl = true, sp = c.accent })
+  vim.api.nvim_set_hl(0, "LspReferenceText",        { bg = c.selection })
+  vim.api.nvim_set_hl(0, "LspReferenceRead",        { bg = c.selection })
+  vim.api.nvim_set_hl(0, "LspReferenceWrite",       { bg = c.selection, underline = true })
 
   -- Messages
   vim.api.nvim_set_hl(0, "ErrorMsg",                { fg = c.red, bold = true })
@@ -153,6 +188,9 @@ M.setup = function()
   vim.api.nvim_set_hl(0, "MoreMsg",                 { fg = c.fg, bold = true })
   vim.api.nvim_set_hl(0, "MsgArea",                 { fg = c.bg, bg = c.fg })
   vim.api.nvim_set_hl(0, "MsgSeparator",            { fg = c.border, bg = c.fg })
+
+  -- Terminal surface
+  vim.api.nvim_set_hl(0, "Terminal",                { fg = c.terminal_fg, bg = c.terminal_bg })
 
   -- Terminal colors
   vim.g.terminal_color_0  = c.black

@@ -6,9 +6,9 @@ A calm, minimal light theme for VS Code. `Blanche` keeps the editor close to mon
 
 ## What it looks like
 
-![Blanche JS Preview](./preview/blanche-js-preview.png)
+![Blanche Preview](https://github.com/shytikov/blanche/blob/main/media/preview.png?raw=true)
 
-*Preview from [VS Code Themes](https://vscodethemes.com/e/shytikov.blanche/blanche).*
+*Image from [VS Code Themes](https://vscodethemes.com/e/shytikov.blanche).*
 
 ## Install
 

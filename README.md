@@ -26,8 +26,18 @@ Then open **Preferences: Color Theme** and select **Blanche**.
 
 ## Design Philosophy
 
-* Emphasize just enough only what really matters.
+`Blanche` keeps the workspace quiet and gives code a clear visual hierarchy.
+
+- Use cool, light editor surfaces and a darker terminal to distinguish the main work areas.
+- Keep most syntax close to monochrome; use bold, italics, and occasional underlines to mark structure.
+- Reserve brighter colors for meaningful accents such as errors, warnings, and changes.
+- Treat readability as a core requirement: aim for clear text contrast and use typography alongside color to show syntax roles.
+- Keep highlights and borders subtle enough to support focus without competing with the code.
+
+## Accessibility and readability
+
+`Blanche` comes from my preference for quiet, readable code: cool light surfaces, mostly monochrome syntax, and a few deliberate accents. I use **WCAG AA**'s `4.5:1` contrast target as a practical benchmark. Main code text is `13.33:1` on the editor background; comments and some warning colors are more subdued, and I'm continuing to tune them while preserving the calm hierarchy I want. I underline functions and types because color alone doesn't give me enough useful distinctions. The underline also suggests a path to the definition, much like LSP navigation. If a color or style works poorly for your vision, your feedback helps me improve `Blanche`.
 
 ## Neovim
 
-I'm developing the Neovim version while using it daily. You can find it in the [`colors/`](./colors/) directory.
+The [`colors/`](./colors/) directory includes a native Neovim Lua theme and a Vimscript colorscheme for Vim or Neovim. Add this repository to your runtime path, then select it with `:colorscheme blanche`.

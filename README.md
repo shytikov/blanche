@@ -24,7 +24,7 @@ Then open **Preferences: Color Theme** and select **Blanche**.
 
 ## Inspiration
 
-`Blanche` is a [fancy perfume from the Swedish brand Byredo](https://www.byredo.com/c/perfume/best-sellers/blanche). It's a delicate and sophisticated fragrance that evokes a sense of calm and purity. Legend says it was designed for the company owner's partner, who actually hated any scents. It was a scandal — how can you date a "perfumer" when you hate perfumes? The answer was something very tender and minimalistic, created to suit a person who cannot stand strong aromas. Its quiet, pared-back feel inspired a theme that lets typography carry much of the visual rhythm.
+`Blanche` is a [fragrance from the Swedish brand Byredo](https://www.byredo.com/c/perfume/best-sellers/blanche). It's delicate and sophisticated, evoking a sense of calm and purity. Legend says it was designed for the company owner's partner, who actually disliked fragrances. It was a scandal — how can you date a "perfumer" when you hate perfume? The answer was something very tender and minimalistic, created to suit a person who cannot stand strong aromas. Its quiet, pared-back feel inspired a theme that lets typography carry much of the visual rhythm.
 
 ## Design Philosophy
 
@@ -38,7 +38,7 @@ Then open **Preferences: Color Theme** and select **Blanche**.
 
 ## Accessibility and readability
 
-`Blanche` comes from my preference for quiet, readable code: cool light surfaces, mostly monochrome syntax, and a few deliberate accents. I use **WCAG AA**'s `4.5:1` contrast target as a practical benchmark. Main code text is `13.33:1` on the editor background; comments and some warning colors are more subdued, and I'm continuing to tune them while preserving the calm hierarchy I want. I underline functions and types because color alone doesn't give me enough useful distinctions. The underline also suggests a path to the definition, much like LSP navigation. If a color or style works poorly for your vision, your feedback helps me improve `Blanche`.
+`Blanche` comes from my preference for quiet, readable code: cool light surfaces, mostly monochrome syntax, and a few deliberate accents. I use the **WCAG AA** `4.5:1` contrast ratio target as a practical benchmark. Main code text has a contrast ratio of `13.33:1` against the editor background; comments and some warning colors are more subdued, and I'm continuing to tune them while preserving the calm hierarchy I want. I underline functions and types because color alone doesn't give me enough useful distinctions. The underline also suggests a path to the definition, much like LSP navigation. If a color or style works poorly for your vision, your feedback helps me improve `Blanche`.
 
 ## Neovim
 

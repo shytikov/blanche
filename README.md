@@ -2,6 +2,8 @@
 
 A calm, minimal light theme for VS Code. `Blanche` keeps the editor close to monochrome, using type styles to give code structure and a little color where it helps.
 
+For a darker companion, try **[Norra](https://marketplace.visualstudio.com/items?itemName=shytikov.norra)**, `Blanche`'s goth sister.
+
 [![Version](https://img.shields.io/github/package-json/v/shytikov/blanche.svg)](./package.json) [![License](https://img.shields.io/github/license/shytikov/blanche.svg)](./LICENSE)
 
 ## What it looks like

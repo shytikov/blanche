@@ -4,8 +4,9 @@
 local M = {}
 
 M.palette = {
-  bg              = "#F1F2F4",
+  bg              = "#ffffff",
   workbench       = "#dddddd",
+  panel           = "#eeeeee",
   terminal_bg     = "#232731",
   terminal_fg     = "#d8dee9",
   fg              = "#232731",
@@ -31,13 +32,13 @@ M.palette = {
   error           = "#ff0000",
   warning         = "#cd9731",
   info            = "#81a1c1",
-  selection       = "#D9DEE7",
-  line_highlight  = "#E5E7EB",
+  selection       = "#e5e5e5",
+  line_highlight  = "#f9f9f9",
   selection2      = "#eeaa13",
   border          = "#B0B4BB",
   inactive        = "#aaaaaa",
-  tab_active      = "#F1F2F4",
-  tab_inactive    = "#F1F2F4",
+  tab_active      = "#ffffff",
+  tab_inactive    = "#eeeeee",
   tab_fg          = "#333333",
   tab_fg_inactive = "#999999",
 }
@@ -51,9 +52,9 @@ M.setup = function()
 
   -- UI
   vim.api.nvim_set_hl(0, "Normal",                  { fg = c.fg, bg = c.bg })
-  vim.api.nvim_set_hl(0, "NormalFloat",             { fg = c.fg, bg = c.workbench })
+  vim.api.nvim_set_hl(0, "NormalFloat",             { fg = c.fg, bg = c.panel })
   vim.api.nvim_set_hl(0, "NormalNC",                { fg = c.fg, bg = c.bg })
-  vim.api.nvim_set_hl(0, "FloatTitle",              { fg = c.accent, bg = c.workbench, bold = true })
+  vim.api.nvim_set_hl(0, "FloatTitle",              { fg = c.accent, bg = c.panel, bold = true })
   vim.api.nvim_set_hl(0, "Cursor",                  { reverse = true })
   vim.api.nvim_set_hl(0, "LineNr",                  { fg = c.inactive, bg = c.bg })
   vim.api.nvim_set_hl(0, "CursorLine",              { bg = c.line_highlight })
@@ -68,12 +69,12 @@ M.setup = function()
   vim.api.nvim_set_hl(0, "TabLineFill",             { bg = c.workbench })
   vim.api.nvim_set_hl(0, "Visual",                  { bg = c.selection })
   vim.api.nvim_set_hl(0, "Search",                  { bg = c.selection2 })
-  vim.api.nvim_set_hl(0, "Pmenu",                   { fg = c.fg, bg = c.bg })
+  vim.api.nvim_set_hl(0, "Pmenu",                   { fg = c.fg, bg = c.panel })
   vim.api.nvim_set_hl(0, "PmenuSel",                { fg = c.fg, bg = c.selection })
   vim.api.nvim_set_hl(0, "PmenuSbar",               { bg = c.inactive })
   vim.api.nvim_set_hl(0, "PmenuThumb",              { bg = c.border })
   vim.api.nvim_set_hl(0, "WinSeparator",            { fg = c.border })
-  vim.api.nvim_set_hl(0, "FloatBorder",             { fg = c.border, bg = c.workbench })
+  vim.api.nvim_set_hl(0, "FloatBorder",             { fg = c.border, bg = c.panel })
   vim.api.nvim_set_hl(0, "MatchParen",              { bold = true, italic = true })
   vim.api.nvim_set_hl(0, "Directory",               { fg = c.fg, bold = true })
   vim.api.nvim_set_hl(0, "Title",                   { fg = c.fg, bold = true })

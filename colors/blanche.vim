@@ -8,9 +8,10 @@ endif
 let g:colors_name = 'blanche'
 set background=light
 
-let s:bg              = '#F1F2F4'
+let s:bg              = '#ffffff'
 let s:workbench       = '#dddddd'
 let s:workbench_fg    = '#555555'
+let s:panel           = '#eeeeee'
 let s:terminal_bg     = '#232731'
 let s:terminal_fg     = '#d8dee9'
 let s:fg              = '#232731'
@@ -35,19 +36,20 @@ let s:comment         = '#999999'
 let s:comment_doc     = '#666666'
 let s:error           = '#ff0000'
 let s:warning         = '#cd9731'
-let s:selection       = '#D9DEE7'
-let s:line_highlight  = '#E5E7EB'
+let s:selection       = '#e5e5e5'
+let s:line_highlight  = '#f9f9f9'
 let s:selection2      = '#eeaa13'
 let s:border          = '#B0B4BB'
 let s:inactive        = '#aaaaaa'
-let s:tab_inactive    = '#F1F2F4'
+let s:tab_active      = '#ffffff'
+let s:tab_inactive    = '#eeeeee'
 let s:tab_fg          = '#333333'
 let s:tab_fg_inactive = '#999999'
 
 " GUI highlights keep the same palette as the Neovim implementation.
 execute 'highlight Normal guifg=' . s:fg . ' guibg=' . s:bg
-execute 'highlight NormalFloat guifg=' . s:fg . ' guibg=' . s:workbench
-execute 'highlight FloatTitle gui=bold guifg=' . s:accent . ' guibg=' . s:workbench
+execute 'highlight NormalFloat guifg=' . s:fg . ' guibg=' . s:panel
+execute 'highlight FloatTitle gui=bold guifg=' . s:accent . ' guibg=' . s:panel
 execute 'highlight NormalNC guifg=' . s:fg . ' guibg=' . s:bg
 execute 'highlight Cursor gui=reverse guifg=NONE guibg=NONE'
 execute 'highlight LineNr guifg=' . s:inactive . ' guibg=' . s:bg
@@ -60,16 +62,16 @@ execute 'highlight StatusLineNC guifg=' . s:workbench_fg . ' guibg=' . s:workben
 execute 'highlight StatusLineTerm guifg=' . s:terminal_fg . ' guibg=' . s:terminal_bg
 execute 'highlight StatusLineTermNC guifg=' . s:terminal_fg . ' guibg=' . s:terminal_bg
 execute 'highlight TabLine guifg=' . s:tab_fg_inactive . ' guibg=' . s:tab_inactive
-execute 'highlight TabLineSel gui=bold guifg=' . s:tab_fg . ' guibg=' . s:bg
+execute 'highlight TabLineSel gui=bold guifg=' . s:tab_fg . ' guibg=' . s:tab_active
 execute 'highlight TabLineFill guibg=' . s:workbench
 execute 'highlight Visual guibg=' . s:selection
 execute 'highlight Search guifg=' . s:fg . ' guibg=' . s:selection2
 execute 'highlight IncSearch gui=bold guifg=' . s:bg . ' guibg=' . s:accent
-execute 'highlight Pmenu guifg=' . s:fg . ' guibg=' . s:tab_inactive
+execute 'highlight Pmenu guifg=' . s:fg . ' guibg=' . s:panel
 execute 'highlight PmenuSel guifg=' . s:fg . ' guibg=' . s:selection
 execute 'highlight PmenuSbar guibg=' . s:inactive
 execute 'highlight PmenuThumb guibg=' . s:border
-execute 'highlight FloatBorder guifg=' . s:border . ' guibg=' . s:workbench
+execute 'highlight FloatBorder guifg=' . s:border . ' guibg=' . s:panel
 execute 'highlight Terminal guifg=' . s:terminal_fg . ' guibg=' . s:terminal_bg
 execute 'highlight MatchParen gui=bold,italic'
 execute 'highlight Directory gui=bold guifg=' . s:fg
@@ -146,4 +148,4 @@ unlet s:bg s:workbench s:workbench_fg s:terminal_bg s:terminal_fg s:line_highlig
       \ s:bright_black s:bright_red s:bright_green s:bright_yellow s:bright_blue
       \ s:bright_magenta s:bright_cyan s:bright_white s:accent s:comment s:comment_doc
       \ s:error s:warning s:selection s:selection2 s:border s:inactive s:tab_inactive
-      \ s:tab_fg s:tab_fg_inactive
+      \ s:tab_active s:panel s:tab_fg s:tab_fg_inactive

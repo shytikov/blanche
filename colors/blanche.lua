@@ -29,7 +29,7 @@ M.palette = {
   accent          = "#81a1c1",
   comment         = "#999999",
   comment_doc     = "#666666",
-  error           = "#ff0000",
+  error           = "#bf616a",
   warning         = "#cd9731",
   info            = "#81a1c1",
   selection       = "#e5e5e5",
@@ -71,13 +71,17 @@ M.setup = function()
   vim.api.nvim_set_hl(0, "Search",                  { bg = c.selection2 })
   vim.api.nvim_set_hl(0, "Pmenu",                   { fg = c.fg, bg = c.panel })
   vim.api.nvim_set_hl(0, "PmenuSel",                { fg = c.fg, bg = c.selection })
+  vim.api.nvim_set_hl(0, "WildMenu",                { fg = c.fg, bg = c.yellow, bold = true })
   vim.api.nvim_set_hl(0, "PmenuSbar",               { bg = c.inactive })
   vim.api.nvim_set_hl(0, "PmenuThumb",              { bg = c.border })
   vim.api.nvim_set_hl(0, "WinSeparator",            { fg = c.border })
   vim.api.nvim_set_hl(0, "FloatBorder",             { fg = c.border, bg = c.panel })
   vim.api.nvim_set_hl(0, "MatchParen",              { bold = true, italic = true })
   vim.api.nvim_set_hl(0, "Directory",               { fg = c.fg, bold = true })
-  vim.api.nvim_set_hl(0, "Title",                   { fg = c.fg, bold = true })
+  vim.api.nvim_set_hl(0, "Title",                   { fg = c.fg, ctermfg = 0, bold = true })
+  for level = 1, 6 do
+    vim.api.nvim_set_hl(0, "markdownH" .. level,     { fg = c.fg, ctermfg = 0, bold = true })
+  end
   vim.api.nvim_set_hl(0, "Question",                { fg = c.blue, bold = true })
   vim.api.nvim_set_hl(0, "SpecialKey",              { fg = c.comment })
   vim.api.nvim_set_hl(0, "NonText",                 { fg = c.inactive })
@@ -184,9 +188,25 @@ M.setup = function()
   vim.api.nvim_set_hl(0, "LspReferenceWrite",       { bg = c.selection, underline = true })
 
   -- Messages
-  vim.api.nvim_set_hl(0, "ErrorMsg",                { fg = c.red, bold = true })
+  vim.api.nvim_set_hl(0, "ErrorMsg",                { fg = c.red, bg = c.bg, ctermfg = 1, ctermbg = 15, bold = true })
   vim.api.nvim_set_hl(0, "WarningMsg",              { fg = c.warning, bold = true })
   vim.api.nvim_set_hl(0, "MoreMsg",                 { fg = c.fg, bold = true })
+  vim.api.nvim_set_hl(0, "ModeMsg",                 { fg = c.fg, bg = "NONE", bold = true })
+
+  local mode_msg_group = vim.api.nvim_create_augroup("BlancheModeMsg", { clear = true })
+  vim.api.nvim_create_autocmd("ModeChanged", {
+    group = mode_msg_group,
+    callback = function()
+      local mode = vim.fn.mode(1)
+      if mode:match("^i") then
+        vim.api.nvim_set_hl(0, "ModeMsg", { fg = c.fg, bg = c.yellow, ctermfg = 0, ctermbg = 3, bold = true })
+      elseif mode:match("^R") then
+        vim.api.nvim_set_hl(0, "ModeMsg", { fg = c.fg, bg = c.yellow, ctermfg = 0, ctermbg = 3, bold = true })
+      else
+        vim.api.nvim_set_hl(0, "ModeMsg", { fg = c.fg, bg = "NONE", bold = true })
+      end
+    end,
+  })
   vim.api.nvim_set_hl(0, "MsgArea",                 { fg = c.bg, bg = c.fg })
   vim.api.nvim_set_hl(0, "MsgSeparator",            { fg = c.border, bg = c.fg })
 

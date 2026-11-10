@@ -34,7 +34,7 @@ let s:bright_white    = '#eceff4'
 let s:accent          = '#81a1c1'
 let s:comment         = '#999999'
 let s:comment_doc     = '#666666'
-let s:error           = '#ff0000'
+let s:error           = s:red
 let s:warning         = '#cd9731'
 let s:selection       = '#e5e5e5'
 let s:line_highlight  = '#f9f9f9'
@@ -69,13 +69,20 @@ execute 'highlight Search guifg=' . s:fg . ' guibg=' . s:selection2
 execute 'highlight IncSearch gui=bold guifg=' . s:bg . ' guibg=' . s:accent
 execute 'highlight Pmenu guifg=' . s:fg . ' guibg=' . s:panel
 execute 'highlight PmenuSel guifg=' . s:fg . ' guibg=' . s:selection
+execute 'highlight WildMenu gui=bold guifg=' . s:fg . ' guibg=' . s:yellow . ' cterm=bold ctermfg=0 ctermbg=3'
 execute 'highlight PmenuSbar guibg=' . s:inactive
 execute 'highlight PmenuThumb guibg=' . s:border
 execute 'highlight FloatBorder guifg=' . s:border . ' guibg=' . s:panel
 execute 'highlight Terminal guifg=' . s:terminal_fg . ' guibg=' . s:terminal_bg
 execute 'highlight MatchParen gui=bold,italic'
 execute 'highlight Directory gui=bold guifg=' . s:fg
-execute 'highlight Title gui=bold guifg=' . s:fg
+execute 'highlight Title term=bold cterm=bold ctermfg=0 gui=bold guifg=' . s:fg
+highlight! link markdownH1 Title
+highlight! link markdownH2 Title
+highlight! link markdownH3 Title
+highlight! link markdownH4 Title
+highlight! link markdownH5 Title
+highlight! link markdownH6 Title
 execute 'highlight NonText guifg=' . s:inactive
 execute 'highlight SpecialKey guifg=' . s:comment
 execute 'highlight Whitespace guifg=' . s:inactive
@@ -101,17 +108,33 @@ execute 'highlight PreProc gui=italic guifg=' . s:comment
 execute 'highlight Type gui=underline guifg=' . s:comment_doc
 execute 'highlight Special guifg=' . s:fg
 execute 'highlight Underlined gui=underline'
-execute 'highlight Error gui=bold guifg=' . s:error
+execute 'highlight Error gui=bold guifg=' . s:error . ' cterm=bold ctermfg=1 ctermbg=NONE'
 execute 'highlight Todo gui=bold,italic guifg=' . s:warning
 execute 'highlight Added guifg=' . s:green
 execute 'highlight Changed guifg=' . s:blue
 execute 'highlight Removed guifg=' . s:red
-execute 'highlight ErrorMsg gui=bold guifg=' . s:red
+execute 'highlight ErrorMsg gui=bold guifg=' . s:red . ' guibg=' . s:bg . ' cterm=bold ctermfg=1 ctermbg=15'
 execute 'highlight WarningMsg gui=bold guifg=' . s:warning
 execute 'highlight MoreMsg gui=bold guifg=' . s:fg
+execute 'highlight ModeMsg gui=bold guifg=' . s:fg . ' guibg=NONE cterm=bold ctermfg=NONE ctermbg=NONE'
+
+function! s:SetModeMsg(mode) abort
+  if a:mode =~# '^i'
+    highlight ModeMsg gui=bold guifg=#232731 guibg=#ebcb8b cterm=bold ctermfg=0 ctermbg=3
+  elseif a:mode =~# '^R'
+    highlight ModeMsg gui=bold guifg=#232731 guibg=#ebcb8b cterm=bold ctermfg=0 ctermbg=3
+  else
+    highlight ModeMsg gui=bold guifg=NONE guibg=NONE cterm=bold ctermfg=NONE ctermbg=NONE
+  endif
+endfunction
+
+augroup BlancheModeMsg
+  autocmd!
+  autocmd ModeChanged *:* call <SID>SetModeMsg(v:event.new_mode)
+augroup END
 
 " Common plugin groups
-execute 'highlight DiagnosticError guifg=' . s:red
+execute 'highlight DiagnosticError guifg=' . s:error
 execute 'highlight DiagnosticWarn guifg=' . s:warning
 execute 'highlight DiagnosticInfo guifg=' . s:blue
 execute 'highlight DiagnosticHint guifg=' . s:accent

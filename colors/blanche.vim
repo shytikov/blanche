@@ -11,6 +11,10 @@ set background=light
 let s:bg              = '#ffffff'
 let s:workbench       = '#dddddd'
 let s:workbench_fg    = '#555555'
+let s:prompt_fg       = '#ffffff'
+let s:prompt_bg       = '#000000'
+let s:diff_add_fg     = '#007c23'
+let s:diff_delete_fg  = '#800000'
 let s:panel           = '#eeeeee'
 let s:terminal_bg     = '#232731'
 let s:terminal_fg     = '#d8dee9'
@@ -35,10 +39,11 @@ let s:accent          = '#81a1c1'
 let s:comment         = '#999999'
 let s:comment_doc     = '#666666'
 let s:error           = s:red
-let s:warning         = '#cd9731'
+let s:warning         = '#ebcb8b'
 let s:selection       = '#e5e5e5'
 let s:line_highlight  = '#f9f9f9'
-let s:selection2      = '#eeaa13'
+" Composite VS Code's translucent yellow selection highlight over white.
+let s:selection2      = '#fceecf'
 let s:border          = '#B0B4BB'
 let s:inactive        = '#aaaaaa'
 let s:tab_active      = '#ffffff'
@@ -108,7 +113,7 @@ execute 'highlight PreProc gui=italic guifg=' . s:comment
 execute 'highlight Type gui=underline guifg=' . s:comment_doc
 execute 'highlight Special guifg=' . s:fg
 execute 'highlight Underlined gui=underline'
-execute 'highlight Error gui=bold guifg=' . s:error . ' cterm=bold ctermfg=1 ctermbg=NONE'
+execute 'highlight Error gui=strikethrough guifg=' . s:error . ' cterm=bold ctermfg=1 ctermbg=NONE'
 execute 'highlight Todo gui=bold,italic guifg=' . s:warning
 execute 'highlight Added guifg=' . s:green
 execute 'highlight Changed guifg=' . s:blue
@@ -116,16 +121,25 @@ execute 'highlight Removed guifg=' . s:red
 execute 'highlight ErrorMsg gui=bold guifg=' . s:red . ' guibg=' . s:bg . ' cterm=bold ctermfg=1 ctermbg=15'
 execute 'highlight WarningMsg gui=bold guifg=' . s:warning
 execute 'highlight MoreMsg gui=bold guifg=' . s:fg
+execute 'highlight Question term=NONE gui=bold guifg=' . s:prompt_fg . ' guibg=' . s:prompt_bg . ' cterm=bold ctermfg=15 ctermbg=0'
 execute 'highlight ModeMsg gui=bold guifg=' . s:fg . ' guibg=NONE cterm=bold ctermfg=NONE ctermbg=NONE'
+execute 'highlight MsgArea term=NONE guifg=' . s:prompt_fg . ' guibg=' . s:prompt_bg . ' ctermfg=15 ctermbg=0'
 
 function! s:SetModeMsg(mode) abort
   if a:mode =~# '^i'
-    highlight ModeMsg gui=bold guifg=#232731 guibg=#ebcb8b cterm=bold ctermfg=0 ctermbg=3
+    execute 'highlight ModeMsg gui=bold guifg=' . s:fg . ' guibg=' . s:green . ' cterm=bold ctermfg=0 ctermbg=2'
+    execute 'highlight MsgArea term=NONE guifg=' . s:fg . ' guibg=' . s:green . ' ctermfg=0 ctermbg=2'
   elseif a:mode =~# '^R'
-    highlight ModeMsg gui=bold guifg=#232731 guibg=#ebcb8b cterm=bold ctermfg=0 ctermbg=3
+    execute 'highlight ModeMsg gui=bold guifg=' . s:fg . ' guibg=' . s:yellow . ' cterm=bold ctermfg=0 ctermbg=3'
+    execute 'highlight MsgArea term=NONE guifg=' . s:fg . ' guibg=' . s:yellow . ' ctermfg=0 ctermbg=3'
+  elseif a:mode =~# '^[vV]'
+    execute 'highlight ModeMsg gui=bold guifg=' . s:fg . ' guibg=' . s:blue . ' cterm=bold ctermfg=0 ctermbg=4'
+    execute 'highlight MsgArea term=NONE guifg=' . s:fg . ' guibg=' . s:blue . ' ctermfg=0 ctermbg=4'
   else
     highlight ModeMsg gui=bold guifg=NONE guibg=NONE cterm=bold ctermfg=NONE ctermbg=NONE
+    execute 'highlight MsgArea term=NONE guifg=' . s:prompt_fg . ' guibg=' . s:prompt_bg . ' ctermfg=15 ctermbg=0'
   endif
+  redraw
 endfunction
 
 augroup BlancheModeMsg
@@ -138,12 +152,27 @@ execute 'highlight DiagnosticError guifg=' . s:error
 execute 'highlight DiagnosticWarn guifg=' . s:warning
 execute 'highlight DiagnosticInfo guifg=' . s:blue
 execute 'highlight DiagnosticHint guifg=' . s:accent
+execute 'highlight LspDiagSignErrorText guifg=' . s:error
+execute 'highlight LspDiagSignWarningText guifg=' . s:warning
+execute 'highlight LspDiagSignInfoText guifg=' . s:blue
+execute 'highlight LspDiagSignHintText guifg=' . s:accent
+execute 'highlight LspDiagInlineError guisp=' . s:error . ' gui=undercurl'
+execute 'highlight LspDiagInlineWarning guisp=' . s:warning . ' gui=undercurl'
+execute 'highlight LspDiagInlineInfo guisp=' . s:blue . ' gui=undercurl'
+execute 'highlight LspDiagInlineHint guisp=' . s:accent . ' gui=undercurl'
+execute 'highlight LspDiagVirtualTextError guifg=' . s:error
+execute 'highlight LspDiagVirtualTextWarning guifg=' . s:warning
+execute 'highlight LspDiagVirtualTextInfo guifg=' . s:blue
+execute 'highlight LspDiagVirtualTextHint guifg=' . s:accent
 execute 'highlight LspReferenceText guibg=' . s:selection
 execute 'highlight LspReferenceRead guibg=' . s:selection
 execute 'highlight LspReferenceWrite gui=underline guibg=' . s:selection
 execute 'highlight GitSignsAdd guifg=' . s:green
 execute 'highlight GitSignsChange guifg=' . s:blue
 execute 'highlight GitSignsDelete guifg=' . s:red
+execute 'highlight DiffAdd guifg=' . s:diff_add_fg
+execute 'highlight DiffChange guifg=' . s:blue
+execute 'highlight DiffDelete guifg=' . s:diff_delete_fg
 
 " Terminal palette (supported by Vim and Neovim).
 let g:terminal_ansi_colors = [s:black, s:red, s:green, s:yellow, s:blue, s:magenta, s:cyan, s:white, s:bright_black, s:bright_red, s:bright_green, s:bright_yellow, s:bright_blue, s:bright_magenta, s:bright_cyan, s:bright_white]
@@ -166,9 +195,11 @@ if has('nvim')
   let g:terminal_color_15 = s:bright_white
 endif
 
+" Keep mode and prompt colors for the ModeChanged callback.
 unlet s:bg s:workbench s:workbench_fg s:terminal_bg s:terminal_fg s:line_highlight
-      \ s:fg s:black s:red s:green s:yellow s:blue s:magenta s:cyan s:white
+      \ s:black s:red s:magenta s:cyan
       \ s:bright_black s:bright_red s:bright_green s:bright_yellow s:bright_blue
       \ s:bright_magenta s:bright_cyan s:bright_white s:accent s:comment s:comment_doc
       \ s:error s:warning s:selection s:selection2 s:border s:inactive s:tab_inactive
       \ s:tab_active s:panel s:tab_fg s:tab_fg_inactive
+      \ s:diff_add_fg s:diff_delete_fg

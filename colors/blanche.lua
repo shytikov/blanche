@@ -6,6 +6,7 @@ local M = {}
 M.palette = {
   bg              = "#ffffff",
   workbench       = "#dddddd",
+  workbench_fg    = "#555555",
   panel           = "#eeeeee",
   terminal_bg     = "#232731",
   terminal_fg     = "#d8dee9",
@@ -41,6 +42,8 @@ M.palette = {
   tab_inactive    = "#eeeeee",
   tab_fg          = "#333333",
   tab_fg_inactive = "#999999",
+  prompt_fg       = "#ffffff",
+  prompt_bg       = "#000000",
 }
 
 M.setup = function()
@@ -60,8 +63,8 @@ M.setup = function()
   vim.api.nvim_set_hl(0, "CursorLine",              { bg = c.line_highlight })
   vim.api.nvim_set_hl(0, "CursorLineNr",            { fg = c.fg, bg = c.line_highlight, bold = true })
   vim.api.nvim_set_hl(0, "VertSplit",               { fg = c.border })
-  vim.api.nvim_set_hl(0, "StatusLine",              { fg = "#555555", bg = c.workbench })
-  vim.api.nvim_set_hl(0, "StatusLineNC",            { fg = "#555555", bg = c.workbench })
+  vim.api.nvim_set_hl(0, "StatusLine",              { fg = c.workbench_fg, bg = c.workbench })
+  vim.api.nvim_set_hl(0, "StatusLineNC",            { fg = c.workbench_fg, bg = c.workbench })
   vim.api.nvim_set_hl(0, "StatusLineTerm",          { fg = c.terminal_fg, bg = c.terminal_bg })
   vim.api.nvim_set_hl(0, "StatusLineTermNC",        { fg = c.terminal_fg, bg = c.terminal_bg })
   vim.api.nvim_set_hl(0, "TabLine",                 { fg = c.tab_fg_inactive, bg = c.tab_inactive })
@@ -82,7 +85,7 @@ M.setup = function()
   for level = 1, 6 do
     vim.api.nvim_set_hl(0, "markdownH" .. level,     { fg = c.fg, ctermfg = 0, bold = true })
   end
-  vim.api.nvim_set_hl(0, "Question",                { fg = c.blue, bold = true })
+  vim.api.nvim_set_hl(0, "Question",                { fg = c.prompt_fg, bg = c.prompt_bg, ctermfg = 15, ctermbg = 0, bold = true, reverse = false, standout = false })
   vim.api.nvim_set_hl(0, "SpecialKey",              { fg = c.comment })
   vim.api.nvim_set_hl(0, "NonText",                 { fg = c.inactive })
   vim.api.nvim_set_hl(0, "Whitespace",              { fg = c.inactive })
@@ -199,15 +202,22 @@ M.setup = function()
     callback = function()
       local mode = vim.fn.mode(1)
       if mode:match("^i") then
-        vim.api.nvim_set_hl(0, "ModeMsg", { fg = c.fg, bg = c.yellow, ctermfg = 0, ctermbg = 3, bold = true })
+        vim.api.nvim_set_hl(0, "ModeMsg", { fg = c.fg, bg = c.green, ctermfg = 0, ctermbg = 2, bold = true })
+        vim.api.nvim_set_hl(0, "MsgArea", { fg = c.fg, bg = c.green, ctermfg = 0, ctermbg = 2 })
       elseif mode:match("^R") then
         vim.api.nvim_set_hl(0, "ModeMsg", { fg = c.fg, bg = c.yellow, ctermfg = 0, ctermbg = 3, bold = true })
+        vim.api.nvim_set_hl(0, "MsgArea", { fg = c.fg, bg = c.yellow, ctermfg = 0, ctermbg = 3 })
+      elseif mode:match("^[vV]") then
+        vim.api.nvim_set_hl(0, "ModeMsg", { fg = c.fg, bg = c.blue, ctermfg = 0, ctermbg = 4, bold = true })
+        vim.api.nvim_set_hl(0, "MsgArea", { fg = c.fg, bg = c.blue, ctermfg = 0, ctermbg = 4 })
       else
         vim.api.nvim_set_hl(0, "ModeMsg", { fg = c.fg, bg = "NONE", bold = true })
+        vim.api.nvim_set_hl(0, "MsgArea", { fg = c.prompt_fg, bg = c.prompt_bg, ctermfg = 15, ctermbg = 0, reverse = false, standout = false })
       end
+      vim.cmd("redraw")
     end,
   })
-  vim.api.nvim_set_hl(0, "MsgArea",                 { fg = c.bg, bg = c.fg })
+  vim.api.nvim_set_hl(0, "MsgArea",                 { fg = c.prompt_fg, bg = c.prompt_bg, ctermfg = 15, ctermbg = 0, reverse = false, standout = false })
   vim.api.nvim_set_hl(0, "MsgSeparator",            { fg = c.border, bg = c.fg })
 
   -- Terminal surface
